@@ -1,9 +1,10 @@
 import { IConfigService } from './config.service.interface';
 import { config, DotenvConfigOutput, DotenvParseOutput } from 'dotenv';
-import { inject } from 'inversify';
+import { inject, injectable } from 'inversify';
 import { TYPES } from '../src/types';
 import { ILogger } from '../src/logger/logger.interface';
 
+@injectable()
 export class ConfigService implements IConfigService {
 	private config: DotenvParseOutput;
 
@@ -16,7 +17,7 @@ export class ConfigService implements IConfigService {
 		}
 	}
 
-	get<T extends number | string>(key: string): T {
-		return this.config[key] as T;
+	get(key: string): string {
+		return this.config[key];
 	}
 }

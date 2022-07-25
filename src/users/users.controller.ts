@@ -36,8 +36,16 @@ export class UsersController extends BaseController implements IUserController {
 		]);
 	}
 
-	login = (req: Request<{}, {}, UserLoginDto>, res: Response): void => {
-		this.ok(res, 'Login');
+	login = async (
+		{ body }: Request<{}, {}, UserLoginDto>,
+		res: Response,
+		next: NextFunction,
+	): Promise<void> => {
+		const result = await this.userService.validateUser(body);
+		if (!result) {
+			return next(new HttpError(401, 'Authorization error', '[Login]'));
+		}
+		this.ok(res, { message: 'Authorization success' });
 	};
 
 	register = async (
@@ -47,9 +55,9 @@ export class UsersController extends BaseController implements IUserController {
 	): Promise<void> => {
 		const result = await this.userService.createUser(body);
 		if (!result) {
-			return next(new HttpError(422, 'User already exists'));
+			return next(new HttpError(422, 'User already exists', '[Register]'));
 		}
-		this.ok(res, result);
+		this.ok(res, { email: result.email, id: result.id });
 	};
 
 	err = (req: Request<{}, {}, UserRegisterDto>, res: Response, next: NextFunction): void => {
