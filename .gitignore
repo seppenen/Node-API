@@ -1,5 +1,5 @@
 /node_modules/
 /dist/
 /.clinic/
-/.env/
+.env
 /prisma
