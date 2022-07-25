@@ -1,4 +1,4 @@
-import { IConfigService } from '../config/config.service.interface';
+import { IConfigService } from './config/config.service.interface';
 
 export const TYPES = {
 	Application: Symbol.for('Application'),

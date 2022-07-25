@@ -3,7 +3,7 @@ import { UserRegisterDto } from './dto/user-register.dto';
 import { User } from './user.entity';
 import { inject, injectable } from 'inversify';
 import { TYPES } from '../types';
-import { IConfigService } from '../../config/config.service.interface';
+import { IConfigService } from '../config/config.service.interface';
 import { IUsersRepository } from './users.repository.interface';
 import { UserModel } from '@prisma/client';
 import { UserLoginDto } from './dto/user-login.dto';

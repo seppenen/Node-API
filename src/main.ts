@@ -9,8 +9,8 @@ import { IExceptionFilter } from './errors/exception.filter.interface';
 import { IUserController } from './users/user.controller.interface';
 import { UserService } from './users/user.service';
 import { IUserService } from './users/user.service.interface';
-import { IConfigService } from '../config/config.service.interface';
-import { ConfigService } from '../config/config.service';
+import { IConfigService } from './config/config.service.interface';
+import { ConfigService } from './config/config.service';
 import { PrismaService } from './database/prisma.service';
 import { UsersRepository } from './users/users.repository';
 
