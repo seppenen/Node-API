@@ -15,10 +15,13 @@ export class AuthMiddleware implements IMiddleware {
 					if (typeof payload === 'object') {
 						req.email = payload.email;
 						req.iat = payload.iat;
+						req.id = payload.id;
+						next();
 					}
 				}
 			});
+		} else {
+			next();
 		}
-		next();
 	};
 }
