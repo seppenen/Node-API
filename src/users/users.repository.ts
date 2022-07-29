@@ -1,6 +1,6 @@
 import { IUsersRepository } from './users.repository.interface';
 import { UserModel } from '@prisma/client';
-import { User } from './user.entity';
+import { User } from './users.entity';
 import { inject, injectable } from 'inversify';
 import { TYPES } from '../types';
 import { PrismaService } from '../database/prisma.service';

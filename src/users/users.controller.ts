@@ -3,12 +3,12 @@ import 'reflect-metadata';
 import { NextFunction, Request, Response } from 'express';
 import { HttpError } from '../errors/http.error';
 import { ILogger } from '../logger/logger.interface';
-import { IUserController } from './user.controller.interface';
+import { IUserController } from './users.controller.interface';
 import { UserLoginDto } from './dto/user-login.dto';
 import { UserRegisterDto } from './dto/user-register.dto';
 import { inject, injectable } from 'inversify';
 import { TYPES } from '../types';
-import { UserService } from './user.service';
+import { UsersService } from './users.service';
 import { ValidateMiddleware } from '../common/validate.middleware';
 import { sign } from 'jsonwebtoken';
 import { ConfigService } from '../config/config.service';
@@ -18,7 +18,7 @@ import { AuthGuard } from '../common/auth.guard';
 export class UsersController extends BaseController implements IUserController {
 	constructor(
 		@inject(TYPES.ILogger) protected loggerService: ILogger,
-		@inject(TYPES.IUserService) private userService: UserService,
+		@inject(TYPES.IUserService) private userService: UsersService,
 		@inject(TYPES.IConfigService) private configService: ConfigService,
 	) {
 		super(loggerService);
