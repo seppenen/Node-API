@@ -30,12 +30,12 @@ interface IMain {
 	app: App;
 }
 
-function main(): IMain {
+async function main(): Promise<IMain> {
 	const container = new Container();
 	container.load(bindings);
 	const app = container.get<App>(TYPES.Application);
-	app.init();
+	await app.init();
 	return { container, app };
 }
 
-export const { container, app } = main();
+export const boot = main();
